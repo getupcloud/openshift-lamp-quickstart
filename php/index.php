@@ -235,7 +235,8 @@ mysql_select_db($name);
 <p>Descubra mais em nossa <a href="https://getup.zendesk.com/categories/search?utf8=%E2%9C%93&query=banco&for_search=1">Base de Conhecimento</a>.</p>
 
                 <h3>Gerenciando com phpMyAdmin</h3>
-                <p>Use o <a href="/phpmyadmin/">phpMyAdmin</a> instalado para gerenciar facilmente seu banco de dados. As credenciais são as mesmas do MySQL, e podem ser obtidas com o comando <code>rhc app show <?php echo getenv('OPENSHIFT_APP_NAME') ?></code> ou na página de sumário da aplicação em nosso <a href="https://broker.getupcloud.com/">Dashboard Web</a>.</p>
+                <p>Use o <a href="/phpmyadmin/">phpMyAdmin</a> instalado para gerenciar facilmente seu banco de dados. As credenciais são as mesmas do MySQL, e podem ser obtidas com o seguinte comando:</p>
+                <pre>$ rhc app show <?php echo getenv('OPENSHIFT_APP_NAME') ?></pre>
             </section>
           </section>
 
