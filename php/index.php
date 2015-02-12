@@ -208,11 +208,37 @@ line-height: 1.4;
 
 <section class='container'>
           <hgroup>
-            <h1>Esta é sua aplicação PHP na Getup Cloud OpenShift</h1>
+            <h1>Esta é sua aplicação LAMP na Getup Cloud OpenShift</h1>
           </hgroup>
 
 
         <div class="row">
+          <section class='col-xs-12 col-sm-6 col-md-6'>
+            <section>
+              <h2>Acessando seu Banco de Dados</h2>
+                <p>Sua aplicação já nasce com um banco de dados <a href="http://mysql.com/">MySQL</a> pronto para ser utilizado. As credenciais estão disponíveis em variáveis de ambiente, que você acessa através da função <code>getenv()</code>:</p>
+                <pre>
+&lt;?php
+$host = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$port = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$user = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$pass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$addr = $host . ":" . $port; //inclua sempre a porta
+
+$link = mysql_connect($addr, $user, $pass);
+
+$name = getenv('OPENSHIFT_APP_NAME'); //base de dados padrão
+
+mysql_select_db($name);
+?&gt;
+</pre>
+<p>Descubra mais em nossa <a href="https://getup.zendesk.com/categories/search?utf8=%E2%9C%93&query=banco&for_search=1">Base de Conhecimento</a>.</p>
+
+                <h3>Gerenciando com phpMyAdmin</h3>
+                <p>Use o <a href="/phpmyadmin/">phpMyAdmin</a> instalado para gerenciar facilmente seu banco de dados. As credenciais são as mesmas do MySQL, e podem ser obtidas com o comando <code>rhc app show <?php echo getenv('OPENSHIFT_APP_NAME') ?></code> ou na página de sumário da aplicação em nosso <a href="https://broker.getupcloud.com/">Dashboard Web</a>.</p>
+            </section>
+          </section>
+
           <section class='col-xs-12 col-sm-6 col-md-6'>
             <section>
               <h2>Modificações no código</h2>
@@ -250,6 +276,8 @@ $ git push</pre>
                 <h3>Console de comando (RHC)</h3>
                 <p><a href="https://getup.zendesk.com/entries/23056511">Instalar o RHC</a> permitirá que você tenha controle completo do seu ambiente de nuvem. Saiba mais sobre o RHC em nosso <a href="https://getup.zendesk.com/entries/26727613">Guia rápido</a>.</p>
 
+          </section>
+          <section class="col-xs-12 col-sm-6 col-md-6">
                 <h2>Documentação e ajuda</h2>
                   <ul>
                     <li><a href="https://getup.zendesk.com/home">Base de conhecimento</a></li>
